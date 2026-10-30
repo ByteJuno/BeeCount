@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       probe_run_id:
-        description: 'Optional existing APK artifact run ID for reader diagnostics'
+        description: 'Optional existing APK artifact run ID for current-source reader diagnostics'
         type: string
         required: false
         default: ''
@@ -27,7 +27,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: root-auto-billing-${{ github.ref }}
+  group: root-auto-billing-${{ github.ref }}-${{ inputs.probe_run_id || 'build' }}
   cancel-in-progress: true
 
 jobs:
@@ -40,6 +40,7 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
+          cache: gradle
       - uses: subosito/flutter-action@v2
         if: ${{ !inputs.probe_run_id }}
         with:
@@ -82,7 +83,7 @@ jobs:
           arch: x86_64
           emulator-boot-timeout: 300
           disable-animations: false
-          script: bash scripts/verify_root_billing_reader.sh
+          script: bash scripts/verify_root_billing_reader.sh ${{ inputs.probe_run_id && '--source' || '' }}
       - uses: actions/upload-artifact@v4
         if: ${{ always() && hashFiles('build/app/outputs/flutter-apk/*debug.apk') != '' }}
         with:

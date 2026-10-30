@@ -12,6 +12,7 @@ import org.json.JSONArray;
 public final class RootBillingWindowReader {
     private RootBillingWindowReader() {}
 
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) {
         if ((Process.myUid() != 0 && Process.myUid() != 2000) ||
                 !(args.length == 1 || (args.length == 2 && "--probe".equals(args[1]))) ||
@@ -19,6 +20,14 @@ public final class RootBillingWindowReader {
             System.exit(1);
             return;
         }
+        Thread.setDefaultUncaughtExceptionHandler((thread, failure) -> {
+            System.out.println("BEECOUNT_ROOT_ERROR:callback");
+            System.out.flush();
+            System.exit(2);
+        });
+        // app_process 不会像 ActivityThread 一样初始化主 Looper；系统的
+        // AccessibilityInteractionClient 在连接回调中需要它创建 Handler。
+        if (Looper.getMainLooper() == null) Looper.prepareMainLooper();
         HandlerThread thread = new HandlerThread("beecount-root-reader");
         thread.start();
         UiAutomation automation = null;
