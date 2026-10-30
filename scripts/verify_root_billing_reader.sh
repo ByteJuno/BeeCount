@@ -11,7 +11,11 @@ adb push "${apks[0]}" /data/local/tmp/beecount-root-reader-test.apk
 
 # A second connection also verifies that the first probe released its session.
 for attempt in 1 2; do
-  result="$(adb shell 'CLASSPATH=/data/local/tmp/beecount-root-reader-test.apk timeout 10 app_process /system/bin com.tntlikely.beecount.RootBillingWindowReader com.tencent.mm --probe' | tr -d '\r')"
+  if ! result="$(adb shell 'CLASSPATH=/data/local/tmp/beecount-root-reader-test.apk timeout 10 app_process /system/bin com.tntlikely.beecount.RootBillingWindowReader com.tencent.mm --probe' | tr -d '\r')"; then
+    # This emulator has no user data; collect runtime errors from this probe.
+    adb logcat -d -s AndroidRuntime:E
+    exit 1
+  fi
   printf '%s\n' "$result"
   test "$result" = BEECOUNT_ROOT_READY
 done

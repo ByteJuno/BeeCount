@@ -2,6 +2,12 @@ name: Root Auto Billing
 
 on:
   workflow_dispatch:
+    inputs:
+      probe_run_id:
+        description: 'Optional existing APK artifact run ID for reader diagnostics'
+        type: string
+        required: false
+        default: ''
   push:
     branches: ['feature/android-root-auto-billing']
   pull_request:
@@ -18,6 +24,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: root-auto-billing-${{ github.ref }}
@@ -34,20 +41,34 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: subosito/flutter-action@v2
+        if: ${{ !inputs.probe_run_id }}
         with:
           flutter-version: '3.27.3'
           channel: stable
           cache: true
       - run: flutter pub get
+        if: ${{ !inputs.probe_run_id }}
       - name: Analyze new Root implementation
+        if: ${{ !inputs.probe_run_id }}
         run: dart analyze lib/services/automation/root_billing_capture.dart lib/services/automation/root_billing_settings.dart lib/services/automation/root_billing_store.dart lib/services/platform/root_billing_controller.dart lib/pages/automation/root_billing_page.dart test/services/automation
       - name: Verify parsing, accounting and existing workflows
+        if: ${{ !inputs.probe_run_id }}
         run: flutter test --no-pub
       - name: Build isolated Android test APK
+        if: ${{ !inputs.probe_run_id }}
         run: flutter build apk --debug --flavor dev --target-platform android-arm64
       - name: Verify native payment-page allowlist
+        if: ${{ !inputs.probe_run_id }}
         working-directory: android
         run: ./gradlew :app:testDevDebugUnitTest
+      - name: Download APK for an explicit reader-only diagnostic run
+        if: ${{ inputs.probe_run_id }}
+        uses: actions/download-artifact@v4
+        with:
+          name: beecount-root-test-apk
+          path: build/app/outputs/flutter-apk
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.probe_run_id }}
       - name: Enable emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -66,5 +87,5 @@ jobs:
         if: ${{ always() && hashFiles('build/app/outputs/flutter-apk/*debug.apk') != '' }}
         with:
           name: beecount-root-test-apk
-          path: build/app/outputs/flutter-apk/*debug.apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-dev-debug.apk
           if-no-files-found: error
