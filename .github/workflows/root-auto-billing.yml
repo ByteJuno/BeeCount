@@ -85,7 +85,7 @@ jobs:
           disable-animations: false
           script: bash scripts/verify_root_billing_reader.sh ${{ inputs.probe_run_id && '--source' || '' }}
       - uses: actions/upload-artifact@v4
-        if: ${{ always() && hashFiles('build/app/outputs/flutter-apk/*debug.apk') != '' }}
+        if: ${{ !inputs.probe_run_id && always() && hashFiles('build/app/outputs/flutter-apk/*debug.apk') != '' }}
         with:
           name: beecount-root-test-apk
           path: build/app/outputs/flutter-apk/app-arm64-v8a-dev-debug.apk
