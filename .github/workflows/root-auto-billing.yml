@@ -10,6 +10,13 @@ on:
         default: ''
   push:
     branches: ['feature/android-root-auto-billing']
+    paths:
+      - 'android/**'
+      - 'lib/**'
+      - 'test/**'
+      - 'assets/**'
+      - 'packages/**'
+      - 'pubspec.*'
   pull_request:
     paths:
       - 'android/**'

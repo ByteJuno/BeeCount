@@ -17,7 +17,8 @@ if [[ "${1:-}" == --source ]]; then
   mkdir "$reader_dir/classes"
   javac -cp "$ANDROID_HOME/platforms/android-36/android.jar" -d "$reader_dir/classes" android/app/src/main/java/com/tntlikely/beecount/RootBillingWindowReader.java
   jar cf "$reader_dir/reader.jar" -C "$reader_dir/classes" .
-  d8_path="$(rg --files "$ANDROID_HOME/build-tools" | rg '/d8$' | sort -V | tail -n 1)"
+  d8_paths=("$ANDROID_HOME"/build-tools/*/d8)
+  d8_path="$(printf '%s\n' "${d8_paths[@]}" | sort -V | tail -n 1)"
   "$d8_path" --lib "$ANDROID_HOME/platforms/android-36/android.jar" --min-api 26 --output "$reader_dir/reader-dex.jar" "$reader_dir/reader.jar"
   adb push "$reader_dir/reader-dex.jar" /data/local/tmp/beecount-root-reader-source.jar
   reader_classpath="/data/local/tmp/beecount-root-reader-source.jar:$reader_classpath"
