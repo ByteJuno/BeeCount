@@ -16321,6 +16321,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unable to share. Please try again.'**
   String get transactionReceiptShareFailed;
+
+  /// No description provided for @rootBillingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Root automatic bookkeeping (experimental)'**
+  String get rootBillingTitle;
+
+  /// No description provided for @rootBillingEntryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognize WeChat and Alipay payment results on this device'**
+  String get rootBillingEntryDescription;
+
+  /// No description provided for @rootBillingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Requires Android 8 or later and Root. Complete, recent merchant payments with a transaction ID, a known account and your category rule are saved automatically. Incomplete records, refunds and transfers remain for review. No screenshots, external modules or cloud AI are used. Open the payment result or detail page long enough for recognition; quick exits and protected pages can be missed.'**
+  String get rootBillingDescription;
+
+  /// No description provided for @rootBillingConsent.
+  ///
+  /// In en, this message translates to:
+  /// **'Grant Root access to BeeCount to read supported payment result pages while the screen is unlocked. Recognition stays on this device. A persistent notification provides a Stop action. The feature never initiates payments or operates the payment apps. Restart recognition here after the app process is stopped.'**
+  String get rootBillingConsent;
+
+  /// No description provided for @rootBillingUnsupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Available in direct-install Android APKs on Android 8 or later'**
+  String get rootBillingUnsupported;
+
+  /// No description provided for @rootBillingRunning.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognition is running'**
+  String get rootBillingRunning;
+
+  /// No description provided for @rootBillingStopped.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognition is stopped'**
+  String get rootBillingStopped;
+
+  /// No description provided for @rootBillingFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognition could not continue. Check Root permission and restart here.'**
+  String get rootBillingFailed;
+
+  /// No description provided for @rootBillingReaderBusy.
+  ///
+  /// In en, this message translates to:
+  /// **'Another automation session is using the page reader. End that session and try again.'**
+  String get rootBillingReaderBusy;
+
+  /// No description provided for @rootBillingReaderUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Root page reading is unavailable on this device. Recognition has not started.'**
+  String get rootBillingReaderUnavailable;
+
+  /// No description provided for @rootBillingStopToEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop recognition before changing these settings.'**
+  String get rootBillingStopToEdit;
+
+  /// No description provided for @rootBillingLedger.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal CNY ledger'**
+  String get rootBillingLedger;
+
+  /// No description provided for @rootBillingWechatAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account for WeChat balance payments'**
+  String get rootBillingWechatAccount;
+
+  /// No description provided for @rootBillingAlipayAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account for Alipay balance payments'**
+  String get rootBillingAlipayAccount;
+
+  /// No description provided for @rootBillingBankAccountHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank-card payments require one unique match for the bank name and last four digits in account settings. A missing match stays for review.'**
+  String get rootBillingBankAccountHint;
+
+  /// No description provided for @rootBillingUnassigned.
+  ///
+  /// In en, this message translates to:
+  /// **'Not configured'**
+  String get rootBillingUnassigned;
+
+  /// No description provided for @rootBillingRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Merchant category rules'**
+  String get rootBillingRules;
+
+  /// No description provided for @rootBillingAddRule.
+  ///
+  /// In en, this message translates to:
+  /// **'Add category rule'**
+  String get rootBillingAddRule;
+
+  /// No description provided for @rootBillingMerchant.
+  ///
+  /// In en, this message translates to:
+  /// **'Merchant keyword'**
+  String get rootBillingMerchant;
+
+  /// No description provided for @rootBillingRulesHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Only your rules assign a category. Longer matching keywords take priority. Missing or conflicting rules stay for review.'**
+  String get rootBillingRulesHint;
+
+  /// No description provided for @rootBillingHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent recognition results'**
+  String get rootBillingHistory;
+
+  /// No description provided for @rootBillingNoEvents.
+  ///
+  /// In en, this message translates to:
+  /// **'No recognition results yet'**
+  String get rootBillingNoEvents;
+
+  /// No description provided for @rootBillingSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved to the ledger'**
+  String get rootBillingSaved;
+
+  /// No description provided for @rootBillingPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Needs review'**
+  String get rootBillingPending;
+
+  /// No description provided for @rootBillingIgnored.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignored'**
+  String get rootBillingIgnored;
+
+  /// No description provided for @rootBillingIgnore.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore this recognition result'**
+  String get rootBillingIgnore;
+
+  /// No description provided for @rootBillingReviewRefund.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund: check its original payment in the ledger. It has not been recorded as income.'**
+  String get rootBillingReviewRefund;
+
+  /// No description provided for @rootBillingReviewTransfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Transfer or repayment: confirm its purpose and both accounts before recording.'**
+  String get rootBillingReviewTransfer;
+
+  /// No description provided for @rootBillingReviewIdentity.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing transaction ID; not saved automatically'**
+  String get rootBillingReviewIdentity;
+
+  /// No description provided for @rootBillingReviewAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment amount or currency is ambiguous'**
+  String get rootBillingReviewAmount;
+
+  /// No description provided for @rootBillingReviewMerchant.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing merchant information'**
+  String get rootBillingReviewMerchant;
+
+  /// No description provided for @rootBillingReviewTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Missing recent payment time, or this is a historical transaction'**
+  String get rootBillingReviewTime;
+
+  /// No description provided for @rootBillingReviewAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment account is not uniquely matched'**
+  String get rootBillingReviewAccount;
+
+  /// No description provided for @rootBillingReviewCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an unambiguous merchant category rule'**
+  String get rootBillingReviewCategory;
+
+  /// No description provided for @rootBillingReviewConflict.
+  ///
+  /// In en, this message translates to:
+  /// **'Conflicting amounts for the same transaction; confirm before recording'**
+  String get rootBillingReviewConflict;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -8681,4 +8681,109 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get transactionReceiptShareFailed => 'Unable to share. Please try again.';
+
+  @override
+  String get rootBillingTitle => 'Root 자동 가계부 (실험적)';
+
+  @override
+  String get rootBillingEntryDescription => 'Recognize WeChat and Alipay payment results on this device';
+
+  @override
+  String get rootBillingDescription => 'Requires Android 8 or later and Root. Complete, recent merchant payments with a transaction ID, a known account and your category rule are saved automatically. Incomplete records, refunds and transfers remain for review. No screenshots, external modules or cloud AI are used. Open the payment result or detail page long enough for recognition; quick exits and protected pages can be missed.';
+
+  @override
+  String get rootBillingConsent => 'Grant Root access to BeeCount to read supported payment result pages while the screen is unlocked. Recognition stays on this device. A persistent notification provides a Stop action. The feature never initiates payments or operates the payment apps. Restart recognition here after the app process is stopped.';
+
+  @override
+  String get rootBillingUnsupported => 'Available in direct-install Android APKs on Android 8 or later';
+
+  @override
+  String get rootBillingRunning => '인식 실행 중';
+
+  @override
+  String get rootBillingStopped => '인식 중지됨';
+
+  @override
+  String get rootBillingFailed => 'Recognition could not continue. Check Root permission and restart here.';
+
+  @override
+  String get rootBillingReaderBusy => '다른 자동화 세션이 페이지 읽기 기능을 사용 중입니다. 해당 세션을 종료한 후 다시 시도하세요.';
+
+  @override
+  String get rootBillingReaderUnavailable => '이 기기에서는 Root 페이지 읽기를 사용할 수 없어 인식을 시작하지 않았습니다.';
+
+  @override
+  String get rootBillingStopToEdit => 'Stop recognition before changing these settings.';
+
+  @override
+  String get rootBillingLedger => '개인 CNY 장부';
+
+  @override
+  String get rootBillingWechatAccount => 'Account for WeChat balance payments';
+
+  @override
+  String get rootBillingAlipayAccount => 'Account for Alipay balance payments';
+
+  @override
+  String get rootBillingBankAccountHint => 'Bank-card payments require one unique match for the bank name and last four digits in account settings. A missing match stays for review.';
+
+  @override
+  String get rootBillingUnassigned => '설정되지 않음';
+
+  @override
+  String get rootBillingRules => '가맹점 분류 규칙';
+
+  @override
+  String get rootBillingAddRule => '분류 규칙 추가';
+
+  @override
+  String get rootBillingMerchant => '가맹점 키워드';
+
+  @override
+  String get rootBillingRulesHint => 'Only your rules assign a category. Longer matching keywords take priority. Missing or conflicting rules stay for review.';
+
+  @override
+  String get rootBillingHistory => '최근 인식 결과';
+
+  @override
+  String get rootBillingNoEvents => '인식 결과 없음';
+
+  @override
+  String get rootBillingSaved => '장부에 저장됨';
+
+  @override
+  String get rootBillingPending => '검토 필요';
+
+  @override
+  String get rootBillingIgnored => '무시됨';
+
+  @override
+  String get rootBillingIgnore => 'Ignore this recognition result';
+
+  @override
+  String get rootBillingReviewRefund => 'Refund: check its original payment in the ledger. It has not been recorded as income.';
+
+  @override
+  String get rootBillingReviewTransfer => 'Transfer or repayment: confirm its purpose and both accounts before recording.';
+
+  @override
+  String get rootBillingReviewIdentity => 'Missing transaction ID; not saved automatically';
+
+  @override
+  String get rootBillingReviewAmount => 'Payment amount or currency is ambiguous';
+
+  @override
+  String get rootBillingReviewMerchant => 'Missing merchant information';
+
+  @override
+  String get rootBillingReviewTime => 'Missing recent payment time, or this is a historical transaction';
+
+  @override
+  String get rootBillingReviewAccount => 'Payment account is not uniquely matched';
+
+  @override
+  String get rootBillingReviewCategory => 'Add an unambiguous merchant category rule';
+
+  @override
+  String get rootBillingReviewConflict => '같은 거래에서 금액이 충돌합니다. 확인 후 기록하세요.';
 }

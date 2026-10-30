@@ -1,0 +1,49 @@
+name: Root Auto Billing
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['feature/android-root-auto-billing']
+  pull_request:
+    paths:
+      - 'android/**'
+      - 'lib/services/automation/root_billing*'
+      - 'lib/services/platform/root_billing_controller.dart'
+      - 'lib/pages/automation/root_billing_page.dart'
+      - 'lib/data/db*'
+      - 'test/services/automation/**'
+      - '.github/workflows/root-auto-billing.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.3'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+      - name: Analyze new Root implementation
+        run: dart analyze lib/services/automation/root_billing_capture.dart lib/services/automation/root_billing_settings.dart lib/services/automation/root_billing_store.dart lib/services/platform/root_billing_controller.dart lib/pages/automation/root_billing_page.dart test/services/automation
+      - name: Verify parsing, accounting and existing workflows
+        run: flutter test --no-pub
+      - name: Build isolated Android test APK
+        run: flutter build apk --debug --flavor dev --target-platform android-arm64
+      - name: Verify native payment-page allowlist
+        working-directory: android
+        run: ./gradlew :app:testDevDebugUnitTest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: beecount-root-test-apk
+          path: build/app/outputs/flutter-apk/*debug.apk
+          if-no-files-found: error

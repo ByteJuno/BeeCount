@@ -1,0 +1,5 @@
+<resources>
+    <string name="root_billing_title">Root 自動記帳</string>
+    <string name="root_billing_running">正在本機識別支援的付款結果頁面</string>
+    <string name="root_billing_stop">停止</string>
+</resources>

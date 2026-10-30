@@ -8673,6 +8673,111 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get transactionReceiptShareFailed => '分享失败，请重试。';
+
+  @override
+  String get rootBillingTitle => 'Root 无感记账（实验性）';
+
+  @override
+  String get rootBillingEntryDescription => '在本机识别微信、支付宝的付款结果';
+
+  @override
+  String get rootBillingDescription => '需要 Android 8 及以上和 Root。近期商户付款具有交易号、明确账户并匹配你的分类规则时自动入账；信息不足、退款和转账保留待核对。不需要手动截图、外部模块或云端 AI。需要在付款结果或详情页停留至识别完成，快速退出或受保护的页面可能漏识别。';
+
+  @override
+  String get rootBillingConsent => '开启后，BeeCount 将请求 Root 权限，仅在屏幕解锁时读取支持的付款结果页面，识别在本机完成。运行时显示常驻通知，可随时停止。功能不会发起支付或操作支付应用。应用进程停止后，需要在此重新开启。';
+
+  @override
+  String get rootBillingUnsupported => '仅直装 Android APK 提供，需要 Android 8 及以上';
+
+  @override
+  String get rootBillingRunning => '识别运行中';
+
+  @override
+  String get rootBillingStopped => '识别已停止';
+
+  @override
+  String get rootBillingFailed => '识别无法继续，请检查 Root 授权后在此重新开启。';
+
+  @override
+  String get rootBillingReaderBusy => '页面读取接口正被其他自动化工具使用，请结束其会话后重试。';
+
+  @override
+  String get rootBillingReaderUnavailable => '此设备暂不支持 Root 页面读取，识别未启动。';
+
+  @override
+  String get rootBillingStopToEdit => '停止识别后可修改设置。';
+
+  @override
+  String get rootBillingLedger => '人民币个人账本';
+
+  @override
+  String get rootBillingWechatAccount => '微信余额付款对应账户';
+
+  @override
+  String get rootBillingAlipayAccount => '支付宝余额付款对应账户';
+
+  @override
+  String get rootBillingBankAccountHint => '银行卡付款需在账户设置中用银行名称和卡号后四位唯一匹配。无法匹配时保留待核对。';
+
+  @override
+  String get rootBillingUnassigned => '未配置';
+
+  @override
+  String get rootBillingRules => '商户分类规则';
+
+  @override
+  String get rootBillingAddRule => '添加分类规则';
+
+  @override
+  String get rootBillingMerchant => '商户关键词';
+
+  @override
+  String get rootBillingRulesHint => '只按你设置的规则分类，较长的匹配关键词优先。没有规则或规则冲突时保留待核对。';
+
+  @override
+  String get rootBillingHistory => '最近识别结果';
+
+  @override
+  String get rootBillingNoEvents => '暂无识别结果';
+
+  @override
+  String get rootBillingSaved => '已入账';
+
+  @override
+  String get rootBillingPending => '待核对';
+
+  @override
+  String get rootBillingIgnored => '已忽略';
+
+  @override
+  String get rootBillingIgnore => '忽略这条识别结果';
+
+  @override
+  String get rootBillingReviewRefund => '退款：请在账本核对原付款，尚未作为收入入账。';
+
+  @override
+  String get rootBillingReviewTransfer => '转账或还款：请确认用途和转出、转入账户后记账。';
+
+  @override
+  String get rootBillingReviewIdentity => '缺少交易号，未自动入账';
+
+  @override
+  String get rootBillingReviewAmount => '实付金额或币种不明确';
+
+  @override
+  String get rootBillingReviewMerchant => '缺少商户信息';
+
+  @override
+  String get rootBillingReviewTime => '缺少近期付款时间，或正在查看历史交易';
+
+  @override
+  String get rootBillingReviewAccount => '付款账户无法唯一匹配';
+
+  @override
+  String get rootBillingReviewCategory => '请添加明确的商户分类规则';
+
+  @override
+  String get rootBillingReviewConflict => '同一交易识别出冲突金额，请核对后记账';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -17278,4 +17383,109 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String logExportCount(int count) {
     return '日誌數量：$count';
   }
+
+  @override
+  String get rootBillingTitle => 'Root 無感記帳（實驗性）';
+
+  @override
+  String get rootBillingEntryDescription => '在本機辨識微信、支付寶的付款結果';
+
+  @override
+  String get rootBillingDescription => '需要 Android 8 及以上和 Root。近期商戶付款具有交易號、明確帳戶並符合你的分類規則時自動入帳；資訊不足、退款和轉帳保留待核對。不需要手動截圖、外部模組或雲端 AI。需要在付款結果或詳細資料頁停留至辨識完成，快速離開或受保護的頁面可能無法辨識。';
+
+  @override
+  String get rootBillingConsent => '開啟後，BeeCount 將請求 Root 權限，僅在螢幕解鎖時讀取支援的付款結果頁面，辨識在本機完成。執行時顯示常駐通知，可隨時停止。功能不會發起付款或操作付款應用程式。應用程式處理程序停止後，需要在此重新開啟。';
+
+  @override
+  String get rootBillingUnsupported => '僅直接安裝的 Android APK 提供，需要 Android 8 及以上';
+
+  @override
+  String get rootBillingRunning => '辨識執行中';
+
+  @override
+  String get rootBillingStopped => '辨識已停止';
+
+  @override
+  String get rootBillingFailed => '辨識無法繼續，請檢查 Root 授權後在此重新開啟。';
+
+  @override
+  String get rootBillingReaderBusy => '頁面讀取介面正被其他自動化工具使用，請結束其工作階段後重試。';
+
+  @override
+  String get rootBillingReaderUnavailable => '此裝置暫不支援 Root 頁面讀取，辨識未啟動。';
+
+  @override
+  String get rootBillingStopToEdit => '停止辨識後可修改設定。';
+
+  @override
+  String get rootBillingLedger => '人民幣個人帳本';
+
+  @override
+  String get rootBillingWechatAccount => '微信餘額付款對應帳戶';
+
+  @override
+  String get rootBillingAlipayAccount => '支付寶餘額付款對應帳戶';
+
+  @override
+  String get rootBillingBankAccountHint => '銀行卡付款需在帳戶設定中以銀行名稱和卡號後四碼唯一比對。無法比對時保留待核對。';
+
+  @override
+  String get rootBillingUnassigned => '未配置';
+
+  @override
+  String get rootBillingRules => '商戶分類規則';
+
+  @override
+  String get rootBillingAddRule => '新增分類規則';
+
+  @override
+  String get rootBillingMerchant => '商戶關鍵字';
+
+  @override
+  String get rootBillingRulesHint => '只按你設定的規則分類，較長的符合關鍵字優先。沒有規則或規則衝突時保留待核對。';
+
+  @override
+  String get rootBillingHistory => '最近辨識結果';
+
+  @override
+  String get rootBillingNoEvents => '暫無辨識結果';
+
+  @override
+  String get rootBillingSaved => '已入帳';
+
+  @override
+  String get rootBillingPending => '待核對';
+
+  @override
+  String get rootBillingIgnored => '已忽略';
+
+  @override
+  String get rootBillingIgnore => '忽略這筆辨識結果';
+
+  @override
+  String get rootBillingReviewRefund => '退款：請在帳本核對原付款，尚未作為收入入帳。';
+
+  @override
+  String get rootBillingReviewTransfer => '轉帳或還款：請確認用途和轉出、轉入帳戶後記帳。';
+
+  @override
+  String get rootBillingReviewIdentity => '缺少交易號，未自動入帳';
+
+  @override
+  String get rootBillingReviewAmount => '實付金額或幣別不明確';
+
+  @override
+  String get rootBillingReviewMerchant => '缺少商戶資訊';
+
+  @override
+  String get rootBillingReviewTime => '缺少近期付款時間，或正在查看歷史交易';
+
+  @override
+  String get rootBillingReviewAccount => '付款帳戶無法唯一比對';
+
+  @override
+  String get rootBillingReviewCategory => '請新增明確的商戶分類規則';
+
+  @override
+  String get rootBillingReviewConflict => '同一交易辨識出衝突金額，請核對後記帳';
 }

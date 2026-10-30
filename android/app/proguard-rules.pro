@@ -126,3 +126,7 @@
 # OkHttp - required by uCrop 2.2.11 (image_cropper 10.0.0)
 -dontwarn okhttp3.**
 -keep class okhttp3.** { *; }
+# app_process 按固定类名调用 APK 内置 Root 入口，R8 不应重命名或移除。
+-keep class com.tntlikely.beecount.RootBillingWindowReader {
+    public static void main(java.lang.String[]);
+}

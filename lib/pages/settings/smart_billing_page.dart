@@ -11,6 +11,8 @@ import '../../providers/theme_providers.dart';
 import '../../providers/voice_billing_providers.dart';
 import '../ai/ai_settings_page.dart';
 import '../automation/auto_billing_settings_page.dart';
+import '../automation/root_billing_page.dart';
+import '../../services/platform/root_billing_controller.dart';
 import 'shortcuts_guide_page.dart';
 import '../../l10n/app_localizations.dart';
 
@@ -311,6 +313,20 @@ class SmartBillingPage extends ConsumerWidget {
                 ),
 
                 const SizedBox(height: 16),
+
+                if (Platform.isAndroid && rootBillingAvailable) ...[
+                  SectionCard(
+                    margin: EdgeInsets.zero,
+                    child: AppListTile(
+                      leading: Icons.auto_mode,
+                      title: l10n.rootBillingTitle,
+                      subtitle: l10n.rootBillingEntryDescription,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const RootBillingPage())),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                ],
 
                 // 截图自动记账
                 SectionCard(

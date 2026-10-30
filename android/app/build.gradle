@@ -16,6 +16,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+    buildFeatures { buildConfig = true }
     namespace = "com.tntlikely.beecount"
     compileSdk = 36
     // Keep in sync with plugins' required NDK to avoid build warnings/errors.
@@ -46,6 +47,8 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
         manifestPlaceholders += [appName: "@string/app_name"]
+        // Root 识别只提供给直装 APK；AAB 构建没有启用入口。
+        buildConfigField "boolean", "ROOT_AUTO_BILLING_ENABLED", (!buildingAppBundle).toString()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     // 当未在命令行指定 --flavor 时，默认选择 dev 风味，避免 Flutter 调试找不到 APK。
     missingDimensionStrategy "env", "dev"
@@ -213,6 +216,7 @@ flutter {
 }
 
 dependencies {
+    testImplementation 'junit:junit:4.13.2'
     // 与 Flutter integration_test 传递依赖的 AndroidX Test 版本保持一致。
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

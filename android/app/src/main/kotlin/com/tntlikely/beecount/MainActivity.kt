@@ -20,6 +20,11 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity: FlutterFragmentActivity() {
+    override fun provideFlutterEngine(context: Context): FlutterEngine? =
+        if (RootBillingBridge.running) RootBillingBridge.engine else null
+
+    override fun shouldDestroyEngineWithHost(): Boolean = !RootBillingBridge.running
+
     private val CHANNEL = "notification_channel"
     private val INSTALL_CHANNEL = "com.tntlikely.beecount/install"
     private val SCREENSHOT_CHANNEL = "com.tntlikely.beecount/screenshot"
@@ -161,6 +166,7 @@ class MainActivity: FlutterFragmentActivity() {
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
+        RootBillingBridge.attach(flutterEngine, this)
 
         android.util.Log.e("MainActivity", "==========================================")
         android.util.Log.e("MainActivity", "configureFlutterEngine 被调用！！！")
@@ -577,6 +583,7 @@ class MainActivity: FlutterFragmentActivity() {
     }
 
     override fun onDestroy() {
+        RootBillingBridge.activityDetached()
         super.onDestroy()
         stopScreenshotObserver()
     }

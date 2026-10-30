@@ -8681,4 +8681,109 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get transactionReceiptShareFailed => 'Unable to share. Please try again.';
+
+  @override
+  String get rootBillingTitle => 'Root automatic bookkeeping (experimental)';
+
+  @override
+  String get rootBillingEntryDescription => 'Recognize WeChat and Alipay payment results on this device';
+
+  @override
+  String get rootBillingDescription => 'Requires Android 8 or later and Root. Complete, recent merchant payments with a transaction ID, a known account and your category rule are saved automatically. Incomplete records, refunds and transfers remain for review. No screenshots, external modules or cloud AI are used. Open the payment result or detail page long enough for recognition; quick exits and protected pages can be missed.';
+
+  @override
+  String get rootBillingConsent => 'Grant Root access to BeeCount to read supported payment result pages while the screen is unlocked. Recognition stays on this device. A persistent notification provides a Stop action. The feature never initiates payments or operates the payment apps. Restart recognition here after the app process is stopped.';
+
+  @override
+  String get rootBillingUnsupported => 'Available in direct-install Android APKs on Android 8 or later';
+
+  @override
+  String get rootBillingRunning => 'Recognition is running';
+
+  @override
+  String get rootBillingStopped => 'Recognition is stopped';
+
+  @override
+  String get rootBillingFailed => 'Recognition could not continue. Check Root permission and restart here.';
+
+  @override
+  String get rootBillingReaderBusy => 'Another automation session is using the page reader. End that session and try again.';
+
+  @override
+  String get rootBillingReaderUnavailable => 'Root page reading is unavailable on this device. Recognition has not started.';
+
+  @override
+  String get rootBillingStopToEdit => 'Stop recognition before changing these settings.';
+
+  @override
+  String get rootBillingLedger => 'Personal CNY ledger';
+
+  @override
+  String get rootBillingWechatAccount => 'Account for WeChat balance payments';
+
+  @override
+  String get rootBillingAlipayAccount => 'Account for Alipay balance payments';
+
+  @override
+  String get rootBillingBankAccountHint => 'Bank-card payments require one unique match for the bank name and last four digits in account settings. A missing match stays for review.';
+
+  @override
+  String get rootBillingUnassigned => 'Not configured';
+
+  @override
+  String get rootBillingRules => 'Merchant category rules';
+
+  @override
+  String get rootBillingAddRule => 'Add category rule';
+
+  @override
+  String get rootBillingMerchant => 'Merchant keyword';
+
+  @override
+  String get rootBillingRulesHint => 'Only your rules assign a category. Longer matching keywords take priority. Missing or conflicting rules stay for review.';
+
+  @override
+  String get rootBillingHistory => 'Recent recognition results';
+
+  @override
+  String get rootBillingNoEvents => 'No recognition results yet';
+
+  @override
+  String get rootBillingSaved => 'Saved to the ledger';
+
+  @override
+  String get rootBillingPending => 'Needs review';
+
+  @override
+  String get rootBillingIgnored => 'Ignored';
+
+  @override
+  String get rootBillingIgnore => 'Ignore this recognition result';
+
+  @override
+  String get rootBillingReviewRefund => 'Refund: check its original payment in the ledger. It has not been recorded as income.';
+
+  @override
+  String get rootBillingReviewTransfer => 'Transfer or repayment: confirm its purpose and both accounts before recording.';
+
+  @override
+  String get rootBillingReviewIdentity => 'Missing transaction ID; not saved automatically';
+
+  @override
+  String get rootBillingReviewAmount => 'Payment amount or currency is ambiguous';
+
+  @override
+  String get rootBillingReviewMerchant => 'Missing merchant information';
+
+  @override
+  String get rootBillingReviewTime => 'Missing recent payment time, or this is a historical transaction';
+
+  @override
+  String get rootBillingReviewAccount => 'Payment account is not uniquely matched';
+
+  @override
+  String get rootBillingReviewCategory => 'Add an unambiguous merchant category rule';
+
+  @override
+  String get rootBillingReviewConflict => 'Conflicting amounts for the same transaction; confirm before recording';
 }

@@ -475,6 +475,20 @@ class SharedLedgerTags extends Table {
   Set<Column> get primaryKey => {ledgerSyncId, syncId};
 }
 
+/// Root 采集的本机入账凭据。与交易在同一事务提交，不作为云同步实体。
+class RootBillingEvents extends Table {
+  TextColumn get eventKey => text()();
+  IntColumn get ledgerId => integer()();
+  TextColumn get payloadJson => text()();
+  TextColumn get status => text()(); // pending / saved / ignored
+  TextColumn get reason => text().nullable()();
+  IntColumn get transactionId => integer().nullable()();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {eventKey};
+}
+
 @DriftDatabase(tables: [
   Ledgers,
   Accounts,
@@ -501,6 +515,7 @@ class SharedLedgerTags extends Table {
   SyncPullErrors,
   ExchangeRates,
   ExchangeRateOverrides,
+  RootBillingEvents,
 ])
 class BeeDatabase extends _$BeeDatabase {
   BeeDatabase() : super(_openConnection());
@@ -511,7 +526,7 @@ class BeeDatabase extends _$BeeDatabase {
   BeeDatabase.forTesting(QueryExecutor executor) : super(executor);
 
   @override
-  int get schemaVersion => 33; // v33: Agent 本地记忆、摘要与审计表
+  int get schemaVersion => 34; // v34: Root 采集的本机入账凭据
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -1257,6 +1272,10 @@ class BeeDatabase extends _$BeeDatabase {
             );
             await _createAgentMemoryFtsTable();
             logger.info('DBMigration', 'v33 迁移完成');
+          }
+          if (from < 34) {
+            await _createTableIfMissing(
+                migrator, 'root_billing_events', rootBillingEvents);
           }
         },
         onCreate: (m) async {

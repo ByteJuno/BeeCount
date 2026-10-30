@@ -1,0 +1,5 @@
+<resources>
+    <string name="root_billing_title">Root automatic bookkeeping</string>
+    <string name="root_billing_running">Reading supported payment result pages locally</string>
+    <string name="root_billing_stop">Stop</string>
+</resources>

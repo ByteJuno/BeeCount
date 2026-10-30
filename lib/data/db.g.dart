@@ -12473,6 +12473,407 @@ class ExchangeRateOverridesCompanion
   }
 }
 
+class $RootBillingEventsTable extends RootBillingEvents
+    with TableInfo<$RootBillingEventsTable, RootBillingEvent> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $RootBillingEventsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _eventKeyMeta =
+      const VerificationMeta('eventKey');
+  @override
+  late final GeneratedColumn<String> eventKey = GeneratedColumn<String>(
+      'event_key', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _ledgerIdMeta =
+      const VerificationMeta('ledgerId');
+  @override
+  late final GeneratedColumn<int> ledgerId = GeneratedColumn<int>(
+      'ledger_id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _payloadJsonMeta =
+      const VerificationMeta('payloadJson');
+  @override
+  late final GeneratedColumn<String> payloadJson = GeneratedColumn<String>(
+      'payload_json', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _statusMeta = const VerificationMeta('status');
+  @override
+  late final GeneratedColumn<String> status = GeneratedColumn<String>(
+      'status', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _reasonMeta = const VerificationMeta('reason');
+  @override
+  late final GeneratedColumn<String> reason = GeneratedColumn<String>(
+      'reason', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _transactionIdMeta =
+      const VerificationMeta('transactionId');
+  @override
+  late final GeneratedColumn<int> transactionId = GeneratedColumn<int>(
+      'transaction_id', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _createdAtMeta =
+      const VerificationMeta('createdAt');
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+      'created_at', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        eventKey,
+        ledgerId,
+        payloadJson,
+        status,
+        reason,
+        transactionId,
+        createdAt
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'root_billing_events';
+  @override
+  VerificationContext validateIntegrity(Insertable<RootBillingEvent> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('event_key')) {
+      context.handle(_eventKeyMeta,
+          eventKey.isAcceptableOrUnknown(data['event_key']!, _eventKeyMeta));
+    } else if (isInserting) {
+      context.missing(_eventKeyMeta);
+    }
+    if (data.containsKey('ledger_id')) {
+      context.handle(_ledgerIdMeta,
+          ledgerId.isAcceptableOrUnknown(data['ledger_id']!, _ledgerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ledgerIdMeta);
+    }
+    if (data.containsKey('payload_json')) {
+      context.handle(
+          _payloadJsonMeta,
+          payloadJson.isAcceptableOrUnknown(
+              data['payload_json']!, _payloadJsonMeta));
+    } else if (isInserting) {
+      context.missing(_payloadJsonMeta);
+    }
+    if (data.containsKey('status')) {
+      context.handle(_statusMeta,
+          status.isAcceptableOrUnknown(data['status']!, _statusMeta));
+    } else if (isInserting) {
+      context.missing(_statusMeta);
+    }
+    if (data.containsKey('reason')) {
+      context.handle(_reasonMeta,
+          reason.isAcceptableOrUnknown(data['reason']!, _reasonMeta));
+    }
+    if (data.containsKey('transaction_id')) {
+      context.handle(
+          _transactionIdMeta,
+          transactionId.isAcceptableOrUnknown(
+              data['transaction_id']!, _transactionIdMeta));
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(_createdAtMeta,
+          createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta));
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {eventKey};
+  @override
+  RootBillingEvent map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return RootBillingEvent(
+      eventKey: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}event_key'])!,
+      ledgerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}ledger_id'])!,
+      payloadJson: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}payload_json'])!,
+      status: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}status'])!,
+      reason: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}reason']),
+      transactionId: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}transaction_id']),
+      createdAt: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}created_at'])!,
+    );
+  }
+
+  @override
+  $RootBillingEventsTable createAlias(String alias) {
+    return $RootBillingEventsTable(attachedDatabase, alias);
+  }
+}
+
+class RootBillingEvent extends DataClass
+    implements Insertable<RootBillingEvent> {
+  final String eventKey;
+  final int ledgerId;
+  final String payloadJson;
+  final String status;
+  final String? reason;
+  final int? transactionId;
+  final DateTime createdAt;
+  const RootBillingEvent(
+      {required this.eventKey,
+      required this.ledgerId,
+      required this.payloadJson,
+      required this.status,
+      this.reason,
+      this.transactionId,
+      required this.createdAt});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['event_key'] = Variable<String>(eventKey);
+    map['ledger_id'] = Variable<int>(ledgerId);
+    map['payload_json'] = Variable<String>(payloadJson);
+    map['status'] = Variable<String>(status);
+    if (!nullToAbsent || reason != null) {
+      map['reason'] = Variable<String>(reason);
+    }
+    if (!nullToAbsent || transactionId != null) {
+      map['transaction_id'] = Variable<int>(transactionId);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  RootBillingEventsCompanion toCompanion(bool nullToAbsent) {
+    return RootBillingEventsCompanion(
+      eventKey: Value(eventKey),
+      ledgerId: Value(ledgerId),
+      payloadJson: Value(payloadJson),
+      status: Value(status),
+      reason:
+          reason == null && nullToAbsent ? const Value.absent() : Value(reason),
+      transactionId: transactionId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(transactionId),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory RootBillingEvent.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return RootBillingEvent(
+      eventKey: serializer.fromJson<String>(json['eventKey']),
+      ledgerId: serializer.fromJson<int>(json['ledgerId']),
+      payloadJson: serializer.fromJson<String>(json['payloadJson']),
+      status: serializer.fromJson<String>(json['status']),
+      reason: serializer.fromJson<String?>(json['reason']),
+      transactionId: serializer.fromJson<int?>(json['transactionId']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'eventKey': serializer.toJson<String>(eventKey),
+      'ledgerId': serializer.toJson<int>(ledgerId),
+      'payloadJson': serializer.toJson<String>(payloadJson),
+      'status': serializer.toJson<String>(status),
+      'reason': serializer.toJson<String?>(reason),
+      'transactionId': serializer.toJson<int?>(transactionId),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  RootBillingEvent copyWith(
+          {String? eventKey,
+          int? ledgerId,
+          String? payloadJson,
+          String? status,
+          Value<String?> reason = const Value.absent(),
+          Value<int?> transactionId = const Value.absent(),
+          DateTime? createdAt}) =>
+      RootBillingEvent(
+        eventKey: eventKey ?? this.eventKey,
+        ledgerId: ledgerId ?? this.ledgerId,
+        payloadJson: payloadJson ?? this.payloadJson,
+        status: status ?? this.status,
+        reason: reason.present ? reason.value : this.reason,
+        transactionId:
+            transactionId.present ? transactionId.value : this.transactionId,
+        createdAt: createdAt ?? this.createdAt,
+      );
+  RootBillingEvent copyWithCompanion(RootBillingEventsCompanion data) {
+    return RootBillingEvent(
+      eventKey: data.eventKey.present ? data.eventKey.value : this.eventKey,
+      ledgerId: data.ledgerId.present ? data.ledgerId.value : this.ledgerId,
+      payloadJson:
+          data.payloadJson.present ? data.payloadJson.value : this.payloadJson,
+      status: data.status.present ? data.status.value : this.status,
+      reason: data.reason.present ? data.reason.value : this.reason,
+      transactionId: data.transactionId.present
+          ? data.transactionId.value
+          : this.transactionId,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RootBillingEvent(')
+          ..write('eventKey: $eventKey, ')
+          ..write('ledgerId: $ledgerId, ')
+          ..write('payloadJson: $payloadJson, ')
+          ..write('status: $status, ')
+          ..write('reason: $reason, ')
+          ..write('transactionId: $transactionId, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(eventKey, ledgerId, payloadJson, status,
+      reason, transactionId, createdAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is RootBillingEvent &&
+          other.eventKey == this.eventKey &&
+          other.ledgerId == this.ledgerId &&
+          other.payloadJson == this.payloadJson &&
+          other.status == this.status &&
+          other.reason == this.reason &&
+          other.transactionId == this.transactionId &&
+          other.createdAt == this.createdAt);
+}
+
+class RootBillingEventsCompanion extends UpdateCompanion<RootBillingEvent> {
+  final Value<String> eventKey;
+  final Value<int> ledgerId;
+  final Value<String> payloadJson;
+  final Value<String> status;
+  final Value<String?> reason;
+  final Value<int?> transactionId;
+  final Value<DateTime> createdAt;
+  final Value<int> rowid;
+  const RootBillingEventsCompanion({
+    this.eventKey = const Value.absent(),
+    this.ledgerId = const Value.absent(),
+    this.payloadJson = const Value.absent(),
+    this.status = const Value.absent(),
+    this.reason = const Value.absent(),
+    this.transactionId = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  RootBillingEventsCompanion.insert({
+    required String eventKey,
+    required int ledgerId,
+    required String payloadJson,
+    required String status,
+    this.reason = const Value.absent(),
+    this.transactionId = const Value.absent(),
+    required DateTime createdAt,
+    this.rowid = const Value.absent(),
+  })  : eventKey = Value(eventKey),
+        ledgerId = Value(ledgerId),
+        payloadJson = Value(payloadJson),
+        status = Value(status),
+        createdAt = Value(createdAt);
+  static Insertable<RootBillingEvent> custom({
+    Expression<String>? eventKey,
+    Expression<int>? ledgerId,
+    Expression<String>? payloadJson,
+    Expression<String>? status,
+    Expression<String>? reason,
+    Expression<int>? transactionId,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (eventKey != null) 'event_key': eventKey,
+      if (ledgerId != null) 'ledger_id': ledgerId,
+      if (payloadJson != null) 'payload_json': payloadJson,
+      if (status != null) 'status': status,
+      if (reason != null) 'reason': reason,
+      if (transactionId != null) 'transaction_id': transactionId,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  RootBillingEventsCompanion copyWith(
+      {Value<String>? eventKey,
+      Value<int>? ledgerId,
+      Value<String>? payloadJson,
+      Value<String>? status,
+      Value<String?>? reason,
+      Value<int?>? transactionId,
+      Value<DateTime>? createdAt,
+      Value<int>? rowid}) {
+    return RootBillingEventsCompanion(
+      eventKey: eventKey ?? this.eventKey,
+      ledgerId: ledgerId ?? this.ledgerId,
+      payloadJson: payloadJson ?? this.payloadJson,
+      status: status ?? this.status,
+      reason: reason ?? this.reason,
+      transactionId: transactionId ?? this.transactionId,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (eventKey.present) {
+      map['event_key'] = Variable<String>(eventKey.value);
+    }
+    if (ledgerId.present) {
+      map['ledger_id'] = Variable<int>(ledgerId.value);
+    }
+    if (payloadJson.present) {
+      map['payload_json'] = Variable<String>(payloadJson.value);
+    }
+    if (status.present) {
+      map['status'] = Variable<String>(status.value);
+    }
+    if (reason.present) {
+      map['reason'] = Variable<String>(reason.value);
+    }
+    if (transactionId.present) {
+      map['transaction_id'] = Variable<int>(transactionId.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RootBillingEventsCompanion(')
+          ..write('eventKey: $eventKey, ')
+          ..write('ledgerId: $ledgerId, ')
+          ..write('payloadJson: $payloadJson, ')
+          ..write('status: $status, ')
+          ..write('reason: $reason, ')
+          ..write('transactionId: $transactionId, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$BeeDatabase extends GeneratedDatabase {
   _$BeeDatabase(QueryExecutor e) : super(e);
   $BeeDatabaseManager get managers => $BeeDatabaseManager(this);
@@ -12510,6 +12911,8 @@ abstract class _$BeeDatabase extends GeneratedDatabase {
   late final $ExchangeRatesTable exchangeRates = $ExchangeRatesTable(this);
   late final $ExchangeRateOverridesTable exchangeRateOverrides =
       $ExchangeRateOverridesTable(this);
+  late final $RootBillingEventsTable rootBillingEvents =
+      $RootBillingEventsTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -12539,7 +12942,8 @@ abstract class _$BeeDatabase extends GeneratedDatabase {
         transactionTagOverrides,
         syncPullErrors,
         exchangeRates,
-        exchangeRateOverrides
+        exchangeRateOverrides,
+        rootBillingEvents
       ];
 }
 
@@ -18532,6 +18936,212 @@ typedef $$ExchangeRateOverridesTableProcessedTableManager
         ),
         ExchangeRateOverride,
         PrefetchHooks Function()>;
+typedef $$RootBillingEventsTableCreateCompanionBuilder
+    = RootBillingEventsCompanion Function({
+  required String eventKey,
+  required int ledgerId,
+  required String payloadJson,
+  required String status,
+  Value<String?> reason,
+  Value<int?> transactionId,
+  required DateTime createdAt,
+  Value<int> rowid,
+});
+typedef $$RootBillingEventsTableUpdateCompanionBuilder
+    = RootBillingEventsCompanion Function({
+  Value<String> eventKey,
+  Value<int> ledgerId,
+  Value<String> payloadJson,
+  Value<String> status,
+  Value<String?> reason,
+  Value<int?> transactionId,
+  Value<DateTime> createdAt,
+  Value<int> rowid,
+});
+
+class $$RootBillingEventsTableFilterComposer
+    extends Composer<_$BeeDatabase, $RootBillingEventsTable> {
+  $$RootBillingEventsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get eventKey => $composableBuilder(
+      column: $table.eventKey, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get ledgerId => $composableBuilder(
+      column: $table.ledgerId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get payloadJson => $composableBuilder(
+      column: $table.payloadJson, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get reason => $composableBuilder(
+      column: $table.reason, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get transactionId => $composableBuilder(
+      column: $table.transactionId, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnFilters(column));
+}
+
+class $$RootBillingEventsTableOrderingComposer
+    extends Composer<_$BeeDatabase, $RootBillingEventsTable> {
+  $$RootBillingEventsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get eventKey => $composableBuilder(
+      column: $table.eventKey, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get ledgerId => $composableBuilder(
+      column: $table.ledgerId, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get payloadJson => $composableBuilder(
+      column: $table.payloadJson, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get status => $composableBuilder(
+      column: $table.status, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get reason => $composableBuilder(
+      column: $table.reason, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get transactionId => $composableBuilder(
+      column: $table.transactionId,
+      builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+      column: $table.createdAt, builder: (column) => ColumnOrderings(column));
+}
+
+class $$RootBillingEventsTableAnnotationComposer
+    extends Composer<_$BeeDatabase, $RootBillingEventsTable> {
+  $$RootBillingEventsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get eventKey =>
+      $composableBuilder(column: $table.eventKey, builder: (column) => column);
+
+  GeneratedColumn<int> get ledgerId =>
+      $composableBuilder(column: $table.ledgerId, builder: (column) => column);
+
+  GeneratedColumn<String> get payloadJson => $composableBuilder(
+      column: $table.payloadJson, builder: (column) => column);
+
+  GeneratedColumn<String> get status =>
+      $composableBuilder(column: $table.status, builder: (column) => column);
+
+  GeneratedColumn<String> get reason =>
+      $composableBuilder(column: $table.reason, builder: (column) => column);
+
+  GeneratedColumn<int> get transactionId => $composableBuilder(
+      column: $table.transactionId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$RootBillingEventsTableTableManager extends RootTableManager<
+    _$BeeDatabase,
+    $RootBillingEventsTable,
+    RootBillingEvent,
+    $$RootBillingEventsTableFilterComposer,
+    $$RootBillingEventsTableOrderingComposer,
+    $$RootBillingEventsTableAnnotationComposer,
+    $$RootBillingEventsTableCreateCompanionBuilder,
+    $$RootBillingEventsTableUpdateCompanionBuilder,
+    (
+      RootBillingEvent,
+      BaseReferences<_$BeeDatabase, $RootBillingEventsTable, RootBillingEvent>
+    ),
+    RootBillingEvent,
+    PrefetchHooks Function()> {
+  $$RootBillingEventsTableTableManager(
+      _$BeeDatabase db, $RootBillingEventsTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$RootBillingEventsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$RootBillingEventsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$RootBillingEventsTableAnnotationComposer(
+                  $db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<String> eventKey = const Value.absent(),
+            Value<int> ledgerId = const Value.absent(),
+            Value<String> payloadJson = const Value.absent(),
+            Value<String> status = const Value.absent(),
+            Value<String?> reason = const Value.absent(),
+            Value<int?> transactionId = const Value.absent(),
+            Value<DateTime> createdAt = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              RootBillingEventsCompanion(
+            eventKey: eventKey,
+            ledgerId: ledgerId,
+            payloadJson: payloadJson,
+            status: status,
+            reason: reason,
+            transactionId: transactionId,
+            createdAt: createdAt,
+            rowid: rowid,
+          ),
+          createCompanionCallback: ({
+            required String eventKey,
+            required int ledgerId,
+            required String payloadJson,
+            required String status,
+            Value<String?> reason = const Value.absent(),
+            Value<int?> transactionId = const Value.absent(),
+            required DateTime createdAt,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              RootBillingEventsCompanion.insert(
+            eventKey: eventKey,
+            ledgerId: ledgerId,
+            payloadJson: payloadJson,
+            status: status,
+            reason: reason,
+            transactionId: transactionId,
+            createdAt: createdAt,
+            rowid: rowid,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$RootBillingEventsTableProcessedTableManager = ProcessedTableManager<
+    _$BeeDatabase,
+    $RootBillingEventsTable,
+    RootBillingEvent,
+    $$RootBillingEventsTableFilterComposer,
+    $$RootBillingEventsTableOrderingComposer,
+    $$RootBillingEventsTableAnnotationComposer,
+    $$RootBillingEventsTableCreateCompanionBuilder,
+    $$RootBillingEventsTableUpdateCompanionBuilder,
+    (
+      RootBillingEvent,
+      BaseReferences<_$BeeDatabase, $RootBillingEventsTable, RootBillingEvent>
+    ),
+    RootBillingEvent,
+    PrefetchHooks Function()>;
 
 class $BeeDatabaseManager {
   final _$BeeDatabase _db;
@@ -18590,4 +19200,6 @@ class $BeeDatabaseManager {
       $$ExchangeRatesTableTableManager(_db, _db.exchangeRates);
   $$ExchangeRateOverridesTableTableManager get exchangeRateOverrides =>
       $$ExchangeRateOverridesTableTableManager(_db, _db.exchangeRateOverrides);
+  $$RootBillingEventsTableTableManager get rootBillingEvents =>
+      $$RootBillingEventsTableTableManager(_db, _db.rootBillingEvents);
 }

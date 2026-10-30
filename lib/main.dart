@@ -23,6 +23,7 @@ import 'providers/security_providers.dart';
 import 'services/system/reminder_monitor_service.dart';
 import 'providers/credit_card_reminder_providers.dart';
 import 'services/platform/screenshot_monitor_service.dart';
+import 'services/platform/root_billing_controller.dart';
 import 'services/platform/image_share_handler_service.dart';
 import 'services/platform/app_link_service.dart';
 import 'services/system/logger_service.dart';
@@ -125,6 +126,11 @@ Future<void> main() async {
     await WidgetManager.registerCallback();
   } catch (e) {
     logger.warning('App', '小组件回调注册失败（可能在不支持的平台上运行）: $e');
+  }
+
+  // 绑定可选 Root 采集的同一引擎入账通道；启动时不请求 Root、不自动启用。
+  if (Platform.isAndroid && rootBillingAvailable) {
+    container.read(rootBillingControllerProvider);
   }
 
   // 恢复截图自动识别设置（Android专属），传入container
