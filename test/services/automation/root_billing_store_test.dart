@@ -61,6 +61,8 @@ void main() {
       expect(result.status, 'saved');
     }
     expect(await repo.getTransactionsByLedger(ledgerId), hasLength(1));
+    expect(
+        await repo.getAccountGlobalBalance(accountId), closeTo(-39.9, 0.00001));
   });
 
   test('same amount with two transaction IDs creates two payments', () async {

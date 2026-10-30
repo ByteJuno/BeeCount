@@ -22,6 +22,7 @@ internal object RootBillingBridge {
     @Volatile var status = "stopped"
 
     fun attach(engine: FlutterEngine, context: Context) {
+        val appContext = context.applicationContext
         this.engine = engine
         attached = true
         channel = MethodChannel(engine.dartExecutor.binaryMessenger,
@@ -38,7 +39,7 @@ internal object RootBillingBridge {
                         } else {
                             worker.execute {
                                 val failure = try {
-                                    RootBillingShell(context.applicationInfo.sourceDir).use {
+                                    RootBillingShell(appContext.applicationInfo.sourceDir).use {
                                         if (!it.checkRoot()) "ROOT_DENIED"
                                         else {
                                             it.probeReader()
@@ -52,7 +53,7 @@ internal object RootBillingBridge {
                                         result.error(failure, "Root recognition could not start", null)
                                     } else {
                                         try {
-                                            context.startForegroundService(Intent(context, RootBillingService::class.java))
+                                            appContext.startForegroundService(Intent(appContext, RootBillingService::class.java))
                                             result.success(true)
                                         } catch (_: Exception) {
                                             result.error("START_FAILED", "Could not start Root billing", null)
@@ -63,7 +64,7 @@ internal object RootBillingBridge {
                         }
                     }
                     "stop" -> {
-                        context.stopService(Intent(context, RootBillingService::class.java))
+                        appContext.stopService(Intent(appContext, RootBillingService::class.java))
                         result.success(true)
                     }
                     else -> result.notImplemented()
