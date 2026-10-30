@@ -5,6 +5,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 /** 只执行内置的只读命令，不接受 Dart、页面或外部 Intent 提供的 shell 命令。 */
+@android.annotation.TargetApi(26)
 internal class RootBillingShell(private val apkPath: String) : AutoCloseable {
     private val reader = Executors.newSingleThreadExecutor()
     @Volatile private var current: Process? = null
@@ -96,11 +97,15 @@ internal object RootWindowPolicy {
         return if (supports(packageName, activity)) packageName to activity else null
     }
 
-    fun supports(packageName: String, activity: String): Boolean = when (packageName) {
-        "com.tencent.mm" -> listOf("wallet", "remittance", "mallorder", "payui")
-            .any { activity.contains(it, ignoreCase = true) }
-        "com.eg.android.AlipayGphone" -> listOf("trade", "pay", "cashier", "h5activity")
-            .any { activity.contains(it, ignoreCase = true) }
-        else -> false
+    fun supports(packageName: String, activity: String): Boolean {
+        // 支付宝命名空间本身含 pay，不能用完整限定名筛选付款页面。
+        val name = activity.substringAfterLast('.')
+        return when (packageName) {
+            "com.tencent.mm" -> listOf("wallet", "remittance", "mallorder", "payui")
+                .any { name.contains(it, ignoreCase = true) }
+            "com.eg.android.AlipayGphone" -> listOf("trade", "pay", "cashier", "h5activity")
+                .any { name.contains(it, ignoreCase = true) }
+            else -> false
+        }
     }
 }

@@ -16,6 +16,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
 /** 用户明确开启的前台服务。锁屏停采，不拉起支付应用，不点击页面。 */
+@android.annotation.TargetApi(26)
 class RootBillingService : Service() {
     private val worker = Executors.newSingleThreadScheduledExecutor()
     private lateinit var shell: RootBillingShell

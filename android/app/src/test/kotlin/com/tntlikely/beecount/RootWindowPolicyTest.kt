@@ -16,6 +16,7 @@ class RootWindowPolicyTest {
         assertFalse(RootWindowPolicy.supports("com.tencent.mm", "com.tencent.mm.ui.LauncherUI"))
         assertFalse(RootWindowPolicy.supports("com.tencent.mm", "com.tencent.mm.ui.chatting.ChattingUI"))
         assertFalse(RootWindowPolicy.supports("com.eg.android.AlipayGphone", "com.alipay.mobile.quinox.LauncherActivity"))
+        assertFalse(RootWindowPolicy.supports("com.eg.android.AlipayGphone", "com.alipay.mobile.pay.ui.HomeActivity"))
         assertFalse(RootWindowPolicy.supports("com.example.fake", "WalletPayUI"))
     }
 
