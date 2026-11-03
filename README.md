@@ -342,56 +342,11 @@ A: 使用自己的服务器 / Storage / Bucket,WebDAV 和 S3 建议 HTTPS 加密
 
 ## 💝 捐赠支持
 
-BeeCount 和 BeeCount Cloud 由同一作者维护。如果这些项目对你有帮助，欢迎请作者喝杯咖啡 ☕，支持持续开发。
+这里是本 fork 维护者 FUXI（ByteJuno）的微信赞赏码。赞赏完全自愿，不会解锁任何功能。
 
-### 捐赠方式
+<img src="docs/donate/wechat-reward.jpg" width="220" alt="FUXI（ByteJuno）的微信赞赏码"/>
 
-[![PayPal](https://img.shields.io/badge/PayPal-Donate-0070BA?logo=paypal&logoColor=white&style=for-the-badge)](https://paypal.me/sunxiaoyes)
-[![Ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/sunxiao)
-
-<details><summary>支付宝 / 微信二维码</summary>
-
-| 支付宝 | 微信支付 |
-|:---:|:---:|
-| <img src="docs/donate/alipay.png" width="160" alt="支付宝"/> | <img src="docs/donate/wechat.png" width="160" alt="微信支付"/> |
-
-</details>
-
-<details>
-<summary>USDT</summary>
-
-**币安 Pay**（币安 App 内扫码转账）：
-
-<img src="docs/donate/binance.png" width="220" alt="币安 Pay 收款码"/>
-
-**链上 USDT（TRC20）**——任意 TRON 钱包扫码：
-
-地址：`TKBV69B2AoU67p3vDhnJUbMJtZ1DxuUF5C`
-
-<img src="docs/donate/trc20.png" width="220" alt="USDT TRC20 地址二维码"/>
-
-</details>
-
-### 感谢支持者
-
-<div>
-  <table align="left"><tr><td align="center"><img src="assets/avatars/rui.svg" width="44" height="44" alt="*睿" /><br/>¥720</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/fishdivinity"><img src="assets/avatars/fishdivinity.png" width="44" height="44" alt="fishdivinity" /></a><br/>¥150</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/HowcanoeWang"><img src="https://github.com/HowcanoeWang.png" width="44" height="44" alt="浩瀚猫" /></a><br/>¥98</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/542474846"><img src="https://github.com/542474846.png" width="44" height="44" alt="542474846" /></a><br/>¥66</td></tr></table>
-  <table align="left"><tr><td align="center"><img src="assets/avatars/wen.svg" width="44" height="44" alt="*文" /><br/>¥50</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/JOHN-2025"><img src="https://github.com/JOHN-2025.png" width="44" height="44" alt="JOHN-2025" /></a><br/>¥30</td></tr></table>
-  <table align="left"><tr><td align="center"><img src="assets/avatars/shao.svg" width="44" height="44" alt="*邵" /><br/>¥15</td></tr></table>
-  <table align="left"><tr><td align="center"><img src="assets/avatars/te.svg" width="44" height="44" alt="*特" /><br/>¥15</td></tr></table>
-  <table align="left"><tr><td align="center"><img src="assets/avatars/qiao.svg" width="44" height="44" alt="*桥" /><br/>¥12</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/birdnofoots"><img src="https://github.com/birdnofoots.png" width="44" height="44" alt="birdnofoots" /></a><br/>¥10</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/charieswang72-pro"><img src="https://github.com/charieswang72-pro.png" width="44" height="44" alt="Charies" /></a><br/>¥10</td></tr></table>
-  <table align="left"><tr><td align="center"><img src="assets/avatars/ge.svg" width="44" height="44" alt="*哥" /><br/>¥6</td></tr></table>
-  <table align="left"><tr><td align="center"><a href="https://github.com/zifengfanzhuo"><img src="https://github.com/zifengfanzhuo.png" width="44" height="44" alt="紫风" /></a><br/>¥5</td></tr></table>
-  <br clear="all"/>
-</div>
-
-> 💡 已捐赠?[提交信息](https://github.com/TNT-Likely/BeeCount/issues/new?template=donation_info.yml) 展示在支持者列表中。
+想支持 BeeCount 原作者，请到上游 [TNT-Likely/BeeCount](https://github.com/TNT-Likely/BeeCount#-捐赠支持)。
 
 ---
 

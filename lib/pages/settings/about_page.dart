@@ -294,8 +294,8 @@ class _AboutPageState extends ConsumerState<AboutPage> {
                           onTap: () async {
                             final lc = locale.languageCode;
                             final docUrl = lc == 'zh'
-                                ? 'https://github.com/TNT-Likely/BeeCount/blob/main/docs/donate/README_ZH.md'
-                                : 'https://github.com/TNT-Likely/BeeCount/blob/main/docs/donate/README_EN.md';
+                                ? 'https://github.com/ByteJuno/BeeCount/blob/main/docs/donate/README_ZH.md'
+                                : 'https://github.com/ByteJuno/BeeCount/blob/main/docs/donate/README_EN.md';
                             await _tryOpenUrl(Uri.parse(docUrl));
                           },
                         ),
