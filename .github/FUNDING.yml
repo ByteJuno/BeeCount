@@ -1,13 +1,2 @@
-# 捐赠链接配置
-# 这些链接会显示在 GitHub 仓库的 "Sponsor" 按钮中
-
-# GitHub Sponsors (审核通过后自动生效)
-github: TNT-Likely
-
-# Open Collective (审核通过后生效)
-open_collective: beecount
-
-# 其他捐赠方式
 custom:
-  - https://paypal.me/sunxiaoyes
-  - https://afdian.com/a/sunxiaoyes
+  - https://github.com/ByteJuno/BeeCount/blob/main/docs/donate/README_ZH.md
